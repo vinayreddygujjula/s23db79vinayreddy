@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1= title
+  p Rows: #{query.rows}, Columns: #{query.cols}
+  - var numRows = Number(query.rows);
+  - var numCols = Number(query.cols);
+  if !Number.isInteger(numRows)
+      p Enter a valid number for rows
+  else if !Number.isInteger(numCols)
+      p Enter a valid number for columns
+  else if numRows < 1 || numRows > 10
+      p Enter a valid number for rows between 1 and 10
+  else if numCols < 1 || numCols > 10
+      p Enter a valid number for columns between 1 and 10
+  else
+    table#outer
+      - for (let row = 0; row < numRows; row++)
+        tr#middle
+          - for (let col = 0; col < numCols; col++)
+            - let value = (row === col) ? 1 : (row === col + 1) ? 2 : (row === col - 1) ? row : 0
+            td= value
