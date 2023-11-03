@@ -1,9 +1,6 @@
-# f23wb79vinayreddy
+# S23DB79GUJJULA
 
 ## VINAY REDDY GUJJULA
 
 
-Render link : https://f23wb79vinayreddy.onrender.com
-## Class : TICKETS
-
-### Attributes {eventName ,venue ,price ,location ,ticketType}
+Render link : https://s23db79gujjula.onrender.com
