@@ -19,3 +19,14 @@ exports.ticket_delete = function (req, res) {
 exports.ticket_update_put = function (req, res) {
     res.send('NOT IMPLEMENTED: Ticket update PUT ' + req.params.id);
 };
+
+
+exports.ticket_list = async function(req, res) {
+    try {
+      const theTickets = await Ticket.find();
+      res.send(theTickets);
+    } catch (err) {
+      res.status(500).send(`{"error": ${err}`);
+    }
+  };
+  
