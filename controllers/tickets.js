@@ -51,7 +51,7 @@ exports.ticket_create_post = async function (req, res) {
     document.venue = req.body.venue;
     document.price = req.body.price;
     document.location = req.body.location;
-    document.ticketType=req.body.ticketType;
+    document.ticketType=req.body.ticketType
 
     try {
         let results = await document.save();
