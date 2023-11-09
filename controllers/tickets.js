@@ -1,4 +1,4 @@
-var Ticket = require('../models/tickets');
+const tickets = require('../models/tickets');
 
 exports.ticket_list = function (req, res) {
     res.send('NOT IMPLEMENTED: Ticket list');
@@ -29,4 +29,40 @@ exports.ticket_list = async function(req, res) {
       res.status(500).send(`{"error": ${err}`);
     }
   };
+
+
+  exports.tickets_view_all_Page = async function (req, res) {
+    try {
+        let tickets1 = await tickets.find();
+        res.render('tickets', { title: 'Ticket Search Results', results: tickets1 });
+    }
+    catch (err) {
+        res.status(500);
+        res.send(`{"error": ${err}}`);
+    }
+};
+
+
+exports.ticket_create_post = async function (req, res) {
+    console.log(req.body)
+    let document = new tickets();
+    
+    document.eventName = req.body.eventName;
+    document.venue = req.body.venue;
+    document.price = req.body.price;
+    document.location = req.body.location;
+    document.ticketType=req.body.ticketType;
+
+    try {
+        let results = await document.save();
+        res.send(results);
+    }
+    catch (err) {
+        res.status(500);
+        res.send(`{"error": ${err}}`);
+    }
+};
+
+
+
   

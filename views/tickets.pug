@@ -4,7 +4,7 @@ block content
   h1= title
   div(class="container-fluid")
     div(class="row")
-      each ticket,index in r
+      each ticket,index in results
         div(class="col-sm-2")
           p Event Name: #{ticket.eventName}
           p Venue: #{ticket.venue}
