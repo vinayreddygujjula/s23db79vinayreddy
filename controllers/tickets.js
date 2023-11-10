@@ -4,8 +4,14 @@ exports.ticket_list = function (req, res) {
     res.send('NOT IMPLEMENTED: Ticket list');
 };
 
-exports.ticket_detail = function (req, res) {
-    res.send('NOT IMPLEMENTED: Ticket detail: ' + req.params.id);
+exports.ticket_detail = async function (req, res) {
+    console.log("detail" + req.params.id)
+    try {
+        res.send(await tickets.findById(req.params.id));
+    } catch (error) {
+        res.status(500)
+        res.send(`{"error": document for id ${req.params.id} not found`);
+    }
 };
 
 exports.ticket_create_post = function (req, res) {
