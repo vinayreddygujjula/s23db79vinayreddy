@@ -22,14 +22,27 @@ exports.ticket_delete = function (req, res) {
     res.send('NOT IMPLEMENTED: Ticket delete DELETE ' + req.params.id);
 };
 
-exports.ticket_update_put = function (req, res) {
-    res.send('NOT IMPLEMENTED: Ticket update PUT ' + req.params.id);
+exports.ticket_update_put = async function (req, res) {
+    try {
+        let updateTicket = await tickets.findById(req.params.id);
+
+        if (req.body.eventName) updateTicket.eventName = req.body.eventName;
+        if (req.body.venue) updateTicket.venue = req.body.venue;
+        if (req.body.price) updateTicket.price = req.body.price;
+        if (req.body.location) updateTicket.location = req.body.location;
+        if (req.body.ticketType) updateTicket.ticketType = req.body.ticketType;
+        let result = await updateTicket.save();
+        console.log("Success " + result);
+        res.send(result);
+    } catch (err) {
+        res.status(500).send(`{"error": ${err}: Update for id ${req.params.id} failed`);
+    }
 };
 
 
 exports.ticket_list = async function(req, res) {
     try {
-      const theTickets = await Ticket.find();
+      const theTickets = await tickets.find();
       res.send(theTickets);
     } catch (err) {
       res.status(500).send(`{"error": ${err}`);
