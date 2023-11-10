@@ -109,6 +109,8 @@ async function recreateDB() {
     ticketType: 'Standard'
   });
 
+
+
   t3.save().then(doc => {
     console.log("Third ticket saved");
   }).catch(err => {
