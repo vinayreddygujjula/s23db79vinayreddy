@@ -84,4 +84,12 @@ exports.ticket_create_post = async function (req, res) {
 
 
 
-  
+exports.ticket_delete = async function(req, res) {
+    try {
+      const result = await tickets.findByIdAndDelete(req.params.id);
+      res.send(result);
+    } catch (err) {
+      res.status(500);
+      res.send(`{"error": "Error deleting ${err}"}`);
+    }
+  };
