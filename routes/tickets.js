@@ -9,6 +9,8 @@ router.get('/tickets/:id', tickets_controller.ticket_detail);
 
 router.get('/detail', tickets_controller.tickets_view_one_Page);
 
-router.get('/create', tickets_controller.ticket_create_page)
+router.get('/create', tickets_controller.ticket_create_page);
+
+router.get('/update', tickets_controller.ticket_update_page);
 
 module.exports = router;

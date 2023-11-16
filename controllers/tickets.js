@@ -116,3 +116,17 @@ exports.ticket_create_page = function(req, res) {
     res.send(`{'error': '${err}'}`);
     }
 };
+
+
+
+exports.ticket_update_page = async function (req, res) {
+    console.log("update view for item " + req.query.id)
+    try {
+        let result = await tickets.findById(req.query.id)
+        res.render('ticketupdate', { title: 'Ticket Update', toShow: result });
+    }
+    catch (err) {
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+};

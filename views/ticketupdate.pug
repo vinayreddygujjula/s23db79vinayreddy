@@ -1,0 +1,50 @@
+extends layout
+
+block content
+  h1= title
+  - let ticketid = toShow._id
+  - let eventName = toShow.eventName
+  - let venue = toShow.venue
+  - let ticketPrice = toShow.price
+  - let location = toShow.location
+  - let ticketType = toShow.ticketType
+
+  div.row(class='mb-2')
+    div.mr-1 ID is
+    div #{ticketid}
+
+  - let actionid = "/resource/tickets/" + ticketid
+  form(id='TicketsForm', action=actionid, method="PUT")
+    div.form-group
+      label(for='ticketName') Event Name
+      input#ticketName(type='text', name='ticketName', value=eventName)
+    div.form-group
+      label(for='venue') Venue
+      input#venue(type='text', name='venue', value=venue)
+    div.form-group
+      label(for='ticketPrice') Ticket Price
+      input#ticketPrice(type='number', name='ticketPrice', value=ticketPrice)
+    div.form-group
+      label(for='location') Location
+      input#location(type='text', name='location', value=location)
+    div.form-group
+      label(for='ticketType') Ticket Type
+      input#ticketType(type='text', name='ticketType', value=ticketType)
+    input(type="submit")
+
+    script.
+      document.forms['TicketsForm'].addEventListener('submit', (event) => {
+        event.preventDefault();
+        fetch(event.target.action, {
+          method: 'PUT',
+          body: new URLSearchParams(new FormData(event.target))
+        }).then((resp) => {
+          return resp.json();
+        }).then((body) => {
+          alert("Update succeeded");
+          // TODO handle body
+        }).catch((error) => {
+          // TODO handle error
+          alert("Update failed " + error);
+        });
+      });
