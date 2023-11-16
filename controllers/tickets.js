@@ -104,3 +104,15 @@ exports.ticket_delete = async function(req, res) {
         res.status(500).send(`{'error': '${err}'}`);
     }
 };
+
+
+exports.ticket_create_page = function(req, res) {
+    console.log("create view")
+    try{
+    res.render('ticketcreate', { title: 'Ticket Create'});
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+};
