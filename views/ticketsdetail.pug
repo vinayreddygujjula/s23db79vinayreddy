@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  h1= title
+  - let ticketid = toShow._id
+  - let eventName = toShow.eventName
+  - let venue = toShow.venue
+  - let price = toShow.price
+  - let location = toShow.location
+  - let ticketType = toShow.ticketType
+
+  div
+    div.row
+      div(class='ticketAttr mr-3') Ticket ID is:
+      div #{ticketid}
+    div.row
+      div(class='ticketAttr mr-3') Event Name:
+      div #{eventName}
+    div.row
+      div(class='ticketAttr mr-3') Venue:
+      div #{venue}
+    div.row
+      div(class='ticketAttr mr-3') Price:
+      div #{price}
+    div.row
+      div(class='ticketAttr mr-3') Location:
+      div #{location}
+    div.row
+      div(class='ticketAttr mr-3') Ticket Type:
+      div #{ticketType}

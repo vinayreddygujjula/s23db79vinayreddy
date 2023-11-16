@@ -6,3 +6,10 @@ body {
 a {
   color: #00B7FF;
 }
+
+
+.ticketAttr{
+  background-color: rgb(255, 127, 168);
+  width: 120px;
+  }
+  
