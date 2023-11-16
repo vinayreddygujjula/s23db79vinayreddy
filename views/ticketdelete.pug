@@ -1,0 +1,55 @@
+extends layout
+
+block content
+  h1= title
+
+  if (toShow == null)
+    h2 No instance to delete
+  else
+    - let eventName = toShow.eventName
+    - let venue = toShow.venue
+    - let ticketPrice = toShow.price
+    - let location = toShow.location
+    - let ticketType = toShow.ticketType
+    - let actionid = "/resource/tickets/" + toShow._id
+    script.
+      let actionid = "#{actionid}"
+
+    div
+      div.row
+        div(class='TicketAttr mr-3') Event Name is:
+          div #{eventName}
+      div.row
+        div(class='TicketAttr mr-3') Venue is:
+          div #{venue}
+      div.row
+        div(class='TicketAttr mr-3') Price is:
+          div #{ticketPrice}
+      div.row
+        div(class='TicketAttr mr-3') Location is:
+          div #{location}
+      div.row
+        div(class='TicketAttr mr-3') Ticket Type is:
+          div #{ticketType}
+
+    button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete
+    button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
+
+  script.
+    function cancel() {
+      window.location.href='/tickets';
+    }
+  script.
+    function deleteOnid() {
+      console.log("starting delete");
+      fetch(actionid, {
+        method: 'DELETE'
+      }).then((resp) => {
+        return resp.json();
+      }).then((body) => {
+        alert("Delete succeeded");
+        window.location.href='/tickets';
+      }).catch((error) => {
+        alert("Delete failed " + error);
+      });
+    }

@@ -12,5 +12,6 @@ router.get('/detail', tickets_controller.tickets_view_one_Page);
 router.get('/create', tickets_controller.ticket_create_page);
 
 router.get('/update', tickets_controller.ticket_update_page);
+router.get('/delete', tickets_controller.ticket_delete_Page);
 
 module.exports = router;

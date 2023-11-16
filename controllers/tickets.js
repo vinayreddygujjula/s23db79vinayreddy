@@ -130,3 +130,15 @@ exports.ticket_update_page = async function (req, res) {
         res.send(`{'error': '${err}'}`);
     }
 };
+
+
+exports.ticket_delete_Page = async function(req, res) {
+    console.log("Delete view for id " + req.query.id);
+    try {
+      const result = await tickets.findById(req.query.id); 
+      res.render('ticketdelete', { title: 'Ticket Delete', toShow: result });
+    } catch (err) {
+      res.status(500).send(`{'error': '${err}'}`);
+    }
+  };
+  
