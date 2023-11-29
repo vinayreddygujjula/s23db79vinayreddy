@@ -1,3 +1,5 @@
+const { Double } = require("mongodb")
+
 const mongoose = require("mongoose")
 const ticketsSchema = mongoose.Schema({
     

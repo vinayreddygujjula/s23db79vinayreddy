@@ -42,7 +42,10 @@ router.get('/login', function(req, res) {
   res.render('login', { title: 'Tickets App Login', user : req.user });
 });
 
+
 router.post('/login', passport.authenticate('local'), function(req, res) {
+  if (req.session.returnTo)                                                     
+  res.redirect(req.session.returnTo);
   res.redirect('/');
 });
 
