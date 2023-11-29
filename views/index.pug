@@ -1,28 +1,40 @@
-extends layout
+//- extends layout
 
-block content
-  h1= title
-  p Welcome to #{title}
-  div#faster Increase the speed
-  button(type="button", class="btn btn-secondary", onclick="goFaster()") Press Me
-  br 
-  br 
-  br
-  br
-  script.
-    var mph = 20
-    var change = 1
-    var divFaster = document.getElementById('faster');
+//- block content
+//-   h1= title
+//-   p Welcome to #{title}
+//-   div#faster Increase the speed
+//-   button(type="button", class="btn btn-secondary", onclick="goFaster()") Press Me
+//-   br 
+//-   br 
+//-   br
+//-   br
+//-   script.
+//-     var mph = 20
+//-     var change = 1
+//-     var divFaster = document.getElementById('faster');
     
-    function goFaster(){
-      mph = mph + change;
-      change++;
-      texttoprint();
-    }
+//-     function goFaster(){
+//-       mph = mph + change;
+//-       change++;
+//-       texttoprint();
+//-     }
 
-    function texttoprint(){
-      divFaster.innerText = `MPH ${mph} with change ${change}`;
-    }
+//-     function texttoprint(){
+//-       divFaster.innerText = `MPH ${mph} with change ${change}`;
+//-     }
 
 
-     a(href="/tickets") Search Results of Tickets Class
+//-      a(href="/tickets") Search Results of Tickets Class
+
+extends layout
+block content
+  if (!user)
+    a(href="/login") Login
+    br
+    a(href="/register") Register
+  if (user)
+    p You are currently logged in as #{user.username}
+    a(href="/tickets") Take me to Tickets
+    br
+    a(href="/logout") Logout
