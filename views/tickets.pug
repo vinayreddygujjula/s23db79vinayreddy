@@ -4,6 +4,7 @@ block content
   h1= title
   div(class="container-fluid")
     div(class="row")
+      b(class="btn btn-success" href="/tickets/create") Create
       each ticket,index in results
         div(class="col-sm-2")
           p Event Name: #{ticket.eventName}
@@ -11,8 +12,10 @@ block content
           p Price: #{ticket.price}
           p Location: #{ticket.location}
           p Ticket Type: #{ticket.ticketType}
-          div(onclick=`buy(${index})`, class="btn btn-primary") Buy
+          
           button.btn( class="btn-primary ml-1", onclick= `dispatch(\"/tickets/update?id=${ticket._id}\")`) Update
+          b(class="btn btn-danger" href=`/tickets/delete?id=${ticket._id}`) Delete
+          b(class="btn btn-dark" href=`/tickets/detail?id=${ticket._id}`) Details
 
   script.
     function buy(index) {

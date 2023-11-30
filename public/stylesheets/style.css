@@ -3,8 +3,9 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
+b {
   color: #00B7FF;
+ 
 }
 
 
@@ -16,4 +17,5 @@ a {
 
   .btn-primary{
   margin: 10px;
+
   }
